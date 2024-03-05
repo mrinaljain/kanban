@@ -76,6 +76,18 @@ nav{
    border: solid 1px black;
 }
 
+
+/* add_note_modal */
 .card .card_color_tag{
    height: 10px;
+}
+
+
+/* add note modal */
+.add_note_modal .note_color_picker{
+
+}
+.add_note_modal .note_color_picker .priorty_color{
+   width: 30px;
+   height: 30px;
 }

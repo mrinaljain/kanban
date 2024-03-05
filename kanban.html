@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./kanban.css">
    <title>Document</title>
 </head>
+
 <body>
    <nav>
       <div class="control_bar">
@@ -33,12 +35,29 @@
             <div class="card_header"></div>
             <div class="card_title"></div>
             <div class="card_content">
-               
+
             </div>
          </div>
       </div>
    </section>
+
+   <div class="modal add_note_modal">
+      <div class="modal_container">
+         <div class="note_content">
+            <textarea name="" id="" cols="30" rows="10">
+
+         </textarea>
+         </div>
+         <div class="note_color_picker">
+            <div class="black priorty_color"></div>
+            <div class="blue priorty_color"></div>
+            <div class="pink priorty_color"></div>
+            <div class="green priorty_color"></div>
+         </div>
+      </div>
+   </div>
    <script src="https://kit.fontawesome.com/6a5f98e22e.js" crossorigin="anonymous"></script>
    <script src="./kanban.js"></script>
 </body>
+
 </html>
