@@ -1,0 +1,81 @@
+body{
+   margin: 0px;
+}
+nav{
+   background-color: #4a484a;
+   min-height: 30px;
+   width: 100vw;
+   padding: 10px 20px;
+}
+.control_bar{
+   display: flex;
+   flex-direction: row;
+   justify-content:start;
+   align-items: center;
+     
+}
+.control_bar .manage_notes{
+   display: flex;
+   max-width: 200px;
+   background-color: #2b2b2b;
+   padding: 5px 10px;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+   
+}
+.manage_notes > div{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 40px;
+   height: 20px;
+   border: solid 1px lightgray;
+   text-align: center;
+   font-size: 15px;
+   color: white;
+   cursor: pointer;
+   
+}
+
+/* notes section */
+.color_filter{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   max-width: 200px;
+   background-color: #2b2b2b;
+   padding: 5px 10px;
+   gap: 5px;
+}
+.color_filter .color{
+   width: 40px;
+   height: 20px;
+   border: solid 1px lightgray;
+}
+.black{
+   background-color: black;
+}
+.blue{
+   background-color: blue;
+}
+.pink{
+   background-color: pink;
+}
+.green{
+   background-color: green;
+}
+
+
+/* cards section */
+
+
+.card{
+   width: 200px;
+   height: 200px;
+   border: solid 1px black;
+}
+
+.card .card_color_tag{
+   height: 10px;
+}
