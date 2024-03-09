@@ -93,7 +93,7 @@ function createTicket(textContent, selectedPriortyColor) {
 //* click events on sorting colors header
 
 for (let i = 0; i < filterColors.length; i++) {
-   
+  
    //* double click to remove all sorting
    filterColors[i].addEventListener('dblclick',function(e){
       // loop on  all cards 
@@ -105,6 +105,7 @@ for (let i = 0; i < filterColors.length; i++) {
          allCards[i].style.display = 'block';
       }
    });
+   
 
    filterColors[i].addEventListener('click', function(e){
       // selecting cards here as they are created dynamiclly
