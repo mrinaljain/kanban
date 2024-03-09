@@ -87,7 +87,7 @@ nav {
    flex-wrap: wrap;
 }
 .card {
-   width: 200px;
+   width: 300px;
    height: 200px;
    border: solid 1px black;
 }
@@ -115,6 +115,15 @@ height: 20px;
    bottom: 0;
    right:0;
    padding: 10px  5px  5px 10px;
+}
+/* .card .card_content span.edit_locked {
+   position:absolute;
+   bottom: 0;
+   right:0;
+   padding: 10px  5px  5px 10px;
+} */
+.card .card_content span.edit .fa-lock-open{
+   display: none;
 }
 /* cards section */
 
