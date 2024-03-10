@@ -1,3 +1,5 @@
+// WARNING: DO NOT EDIT THE BELOW CODE OR DATA
+
 // DUMMY DATA FOR THE COLORS
 let ticketsArr = [
    {
@@ -34,10 +36,10 @@ function createTicket(ticketTask, ticketColor, ticketID) {
    ticketCont.setAttribute("class", "ticket-cont");
 
    ticketCont.innerHTML = `<div class="ticket-color ${ticketColor}"></div>
-       <div class="ticket-id">#${id}</div>
+       <div class="ticket-id">${id}</div>
        <div class="task-area">${ticketTask}</div>
        <div class="ticket-lock">
-         <i class="fa-solid fa-lock"></i>
+       <button>Locked</button>
       </div>`;
 
    let mainCont = document.querySelector(".main-cont");
@@ -47,8 +49,5 @@ function createTicket(ticketTask, ticketColor, ticketID) {
       ticketsArr.push({ ticketTask, ticketColor, ticketID: id });
       localStorage.setItem("tickets", JSON.stringify(ticketsArr));
    }
-
-   console.log(ticketsArr);
 }
-
 

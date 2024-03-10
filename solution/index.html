@@ -37,13 +37,12 @@ src = './assets/profile.png'
 
    <!-- MAIN CONTAINER - Tickets holder -->
    <div class="main-cont">
-      <!-- <div class="ticket-cont">
-            <div class="ticket-color"></div>
-            <div class="ticket-id">id 1</div>
-            <div class="task-area"> this  is task 1</div>
-            <div class="ticket-lock">
-              <i class="fa-solid fa-lock"></i>
-           </div> -->
+      <!-- <div class="ticket-color ${ticketColor}"></div>
+       <div class="ticket-id">${id}</div>
+       <div class="task-area">${ticketTask}</div>
+       <div class="ticket-lock">
+       <button>Locked</button>
+      </div> -->
    </div>
    </div>
 
@@ -64,44 +63,49 @@ src = './assets/profile.png'
 
    </div>
 
-   <script src="script.js"></script>
-
-   <script>
-      // Write your solution here =====================================================
-      let filterColors = document.querySelectorAll(".toolbox-priority-cont .color");
-      for (let i = 0; i < filterColors.length; i++) {
-         filterColors[i].addEventListener('dblclick', function (e) {
-            let allCards = document.querySelectorAll('.main-cont .ticket-cont');
-            for (let i = 0; i < allCards.length; i++) {
-               allCards[i].remove();
-            }
-            for (let i = 0 ;i < ticketsArr.length;i++) {
-               createTicket(ticketsArr[i].ticketTask, ticketsArr[i].ticketColor, ticketsArr[i].ticketID);
-            }
-         });
-
-
-         filterColors[i].addEventListener('click', function (e) {
-            //find the color whhich is clicked
-            let clickedColor = e.target.classList[0];
-            let allCards = document.querySelectorAll('.main-cont .ticket-cont');
-            // loop through all the listed cards
-            for (let i = 0; i < allCards.length; i++) {
-               allCards[i].remove();
-            }
-            for (let i = 0 ; i < ticketsArr.length ; i++) {
-               if (ticketsArr[i]['ticketColor'] === clickedColor) {
-                  createTicket(ticketsArr[i].ticketTask, ticketsArr[i].ticketColor, ticketsArr[i].ticketID);
-               }
-            }
-
-         }
-         );
-      }
+   <script src="script.js">
    </script>
+   <script>
+      //add event listener on card holder
+      // find if clecked class is lock or unlock
+      // if class is locked 
+      // --> change class name unlocked
+      // --> change button text unlocked
+      // --> change parent content editable
+      // else
+      // --> change class name  locked
+      // --> change button text unlocked
+      // --> change parent content non editable
+      // update the global object using the ticket id
+      // --> get value of the updated text
+      // --> find the object inside array 
+      // --> update the specific property of that opbject
 
+      let cardHolder = document.querySelector('.main-cont');
+      cardHolder.addEventListener('click', function(e){
+         let targetElement = e.target;
+         let targetClass = targetElement.parentNode.classList[0];
+         if(targetClass === 'ticket-lock'){
+            targetElement.parentNode.classList.replace('ticket-lock' , 'ticket-unlock');
+            targetElement.innerText = 'Unlocked';
+            targetElement.closest('.ticket-cont').querySelector('.task-area').setAttribute('contenteditable', 'true');
+         }
+         else if(targetClass === 'ticket-unlock'){
+            targetElement.parentNode.classList.replace('ticket-unlock', 'ticket-lock');
+            targetElement.innerText = 'Locked';
+            targetElement.closest('.ticket-cont').querySelector('.task-area').setAttribute('contenteditable', 'false');
+            let updatedText = targetElement.closest('.ticket-cont').querySelector('.task-area').innerText;
+            let currentTicketId = targetElement.closest('.ticket-cont').querySelector('.ticket-id').innerText;
+            ticketsArr.forEach(ticket => {
+               if (ticket['ticketID'] === currentTicketId) {
+                  ticket['ticketTask'] = updatedText;
+               }
+            });
+      
+         }   
+      });
 
-
+   </script>
 </body>
 
 </html>

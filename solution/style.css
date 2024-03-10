@@ -133,13 +133,25 @@ body {
    height: 2rem;
 }
 
-.ticket-lock {
+.ticket-lock,
+.ticket-unlock {
    display: flex;
    font-size: 1.5rem;
    justify-content: flex-end;
    margin-top: 90px;
    margin-right: 5px;
+}
 
+.ticket-cont button {
+   font-family: Arial, Helvetica, sans-serif;
+   background-color: transparent;
+   color: white;
+   font-size: large;
+   border: 2px double #dfe4ea;
+}
+
+.ticket-cont button:hover {
+   cursor: pointer;
 }
 
 .add-btn:hover {
