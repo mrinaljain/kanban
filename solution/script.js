@@ -37,10 +37,7 @@ function createTicket(ticketTask, ticketColor, ticketID) {
 
    ticketCont.innerHTML = `<div class="ticket-color ${ticketColor}"></div>
        <div class="ticket-id">${id}</div>
-       <div class="task-area">${ticketTask}</div>
-       <div class="ticket-lock">
-       <button>Locked</button>
-      </div>`;
+       <div class="task-area">${ticketTask}</div>`;
 
    let mainCont = document.querySelector(".main-cont");
    mainCont.append(ticketCont);
@@ -50,4 +47,3 @@ function createTicket(ticketTask, ticketColor, ticketID) {
       localStorage.setItem("tickets", JSON.stringify(ticketsArr));
    }
 }
-

@@ -19,7 +19,6 @@ src = './assets/profile.png'
 
    <link rel="stylesheet" href="style.css">
 
-
 </head>
 
 <body>
@@ -32,80 +31,77 @@ src = './assets/profile.png'
          <div class="black color"></div>
       </div>
 
-
+      <div class="action-btn-cont">
+         <div class="remove-btn">
+            <img src="https://static.thenounproject.com/png/2729489-200.png" alt="X" height="50%">
+         </div>
+      </div>
    </div>
 
    <!-- MAIN CONTAINER - Tickets holder -->
    <div class="main-cont">
       <!-- <div class="ticket-color ${ticketColor}"></div>
        <div class="ticket-id">${id}</div>
-       <div class="task-area">${ticketTask}</div>
-       <div class="ticket-lock">
-       <button>Locked</button>
-      </div> -->
+       <div class="task-area">${ticketTask}</div> -->
    </div>
-   </div>
-
-   <!-- MODAL - Ticket generator window -->
-   <div class="modal-cont">
-
-      <textarea class="textArea-cont" placeholder="Enter Your Task" spellcheck="false">
-
-       </textarea>
-
-
-      <div class="priority-colors-container">
-         <div class="lightpink priority-color"></div>
-         <div class="lightgreen priority-color"></div>
-         <div class="lightblue priority-color"></div>
-         <div class="black priority-color active"></div>
-      </div>
-
    </div>
 
    <script src="script.js">
    </script>
    <script>
-      //add event listener on card holder
-      // find if clecked class is lock or unlock
-      // if class is locked 
-      // --> change class name unlocked
-      // --> change button text unlocked
-      // --> change parent content editable
-      // else
-      // --> change class name  locked
-      // --> change button text unlocked
-      // --> change parent content non editable
-      // update the global object using the ticket id
-      // --> get value of the updated text
-      // --> find the object inside array 
-      // --> update the specific property of that opbject
-
-      let cardHolder = document.querySelector('.main-cont');
-      cardHolder.addEventListener('click', function(e){
-         let targetElement = e.target;
-         let targetClass = targetElement.parentNode.classList[0];
-         if(targetClass === 'ticket-lock'){
-            targetElement.parentNode.classList.replace('ticket-lock' , 'ticket-unlock');
-            targetElement.innerText = 'Unlocked';
-            targetElement.closest('.ticket-cont').querySelector('.task-area').setAttribute('contenteditable', 'true');
+      // click event on delete button
+      // --> if (delete is not active)
+      // --> set active to true
+      // --> show alert'delet activated
+      // --> tunn delete button to background - red
+      // --> delete the card if clicked or remove from DOM
+      // --> also remove from the array
+      // ELSE ( already active )
+      // --> set active to false
+      // --> set background color of button back to nornal
+      let deletIcon = document.querySelector('.remove-btn img');
+      let allTickets = document.querySelectorAll('.ticket-cont');
+      var isDeleteActive = false;
+      deletIcon.addEventListener('click', function (e) {
+         let clickedElement = e.target;
+         console.log('clickedElement');
+         console.log(clickedElement);
+         if (!isDeleteActive) {
+            isDeleteActive = true;
+            clickedElement.closest('.remove-btn').style.backgroundColor = 'red';
+            alert('Delete Button is Active bhaiyo...!');
+            activateDeleteListener();
          }
-         else if(targetClass === 'ticket-unlock'){
-            targetElement.parentNode.classList.replace('ticket-unlock', 'ticket-lock');
-            targetElement.innerText = 'Locked';
-            targetElement.closest('.ticket-cont').querySelector('.task-area').setAttribute('contenteditable', 'false');
-            let updatedText = targetElement.closest('.ticket-cont').querySelector('.task-area').innerText;
-            let currentTicketId = targetElement.closest('.ticket-cont').querySelector('.ticket-id').innerText;
-            ticketsArr.forEach(ticket => {
-               if (ticket['ticketID'] === currentTicketId) {
-                  ticket['ticketTask'] = updatedText;
-               }
-            });
-      
-         }   
+         else {
+            isDeleteActive = false;
+            clickedElement.closest('.remove-btn').style.backgroundColor = '';
+            deActivateDeleteListener();
+         }
       });
 
+      function activateDeleteListener() {
+         allTickets.forEach(function (ticket) {
+            ticket.addEventListener('click', function (e) {
+               let clickedElement = e.target;
+               if (isDeleteActive) {
+                  clickedElement.closest('.ticket-cont').remove();
+               }
+            });
+         });
+      }
+      function deActivateDeleteListener() {
+         allTickets.forEach(function (ticket) {
+            ticket.removeEventListener('click', function () { });
+         });
+      }
+
+
+
+
    </script>
+
+
+
 </body>
 
 </html>
